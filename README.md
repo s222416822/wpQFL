@@ -1,6 +1,6 @@
 # wpQFL - Performance Analysis and Design of a Weighted  Personalized Quantum Federated Learning
 IEEE Transactions on Artificial Intelligence
-URL DOI [10.1109/TAI.2025.3545393](URL) [Early Access]
+URL DOI [https://ieeexplore.ieee.org/abstract/document/10902619](URL) [Early Access]
 
 #Details
 - Code Implementation for wpQFL Paper
