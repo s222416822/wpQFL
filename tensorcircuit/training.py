@@ -6,7 +6,7 @@ import jax.numpy as jnp
 from tqdm import tqdm
 from quantum_model import compute_loss, compute_accuracy, pred
 from config import comm_rounds, dataset_used, datasize_used, no_of_qubits, n_node, n_class, k
-from distance_matrics import compute_distances
+from distance_metrics import compute_distances
 
 
 def main_method(method, g, l, noniid_data, noniid_type, devices_list, x_test, y_test, distance_metrics_used=None):
