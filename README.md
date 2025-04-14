@@ -4,7 +4,7 @@ IEEE Transactions on Artificial Intelligence
 
 This repository contains the code used for the paper titled "Performance Analysis and Design of a Weighted Personalized Quantum Federated Learning".
 
-##Abstract 
+## Abstract 
 Advances in federated and quantum computing have improved data privacy and efficiency in distributed systems. 
 Quantum Federated Learning (QFL), like its classical counterpart, Classic Federated Learning (CFL), 
 struggles with challenges in heterogeneous environments. 
