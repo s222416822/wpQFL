@@ -18,7 +18,7 @@ fills this gap by adapting to data heterogeneity with weighted personalization a
 - **Arxiv Preprint**: []()
 - **Journal Version**: [https://10.1109/TAI.2025.3545393]() 
 
-#Details
+# Details
 - Code Implementation for wpQFL Paper
 - Includes implementation in Tensorcircuit, PennyLane and Qiskit
 - Results in both simulators and Real IBM quantum Computer 
