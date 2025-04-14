@@ -1,6 +1,6 @@
 # Performance Analysis and Design of a Weighted Personalized Quantum Federated Learning
 IEEE Transactions on Artificial Intelligence
-[ 10.1109/TAI.2025.3545393](URL) [Early Access]
+[https://10.1109/TAI.2025.3545393](URL) [Early Access]
 
 This repository contains the code used for the paper titled "Performance Analysis and Design of a Weighted Personalized Quantum Federated Learning".
 
@@ -16,7 +16,7 @@ fills this gap by adapting to data heterogeneity with weighted personalization a
 
 ## Paper
 - **Arxiv Preprint**: []()
-- **Journal Version**: [ 10.1109/TAI.2025.3545393]() 
+- **Journal Version**: [https://10.1109/TAI.2025.3545393]() 
 
 #Details
 - Code Implementation for wpQFL Paper
@@ -39,4 +39,9 @@ fills this gap by adapting to data heterogeneity with weighted personalization a
 - README.md file for general instructions and information
 - wpQFL folder contains codes for each platform: Qiskit, TensorCircuit and PennyLane
 
-Being updated...
+References:
+1. https://github.com/Qiskit/qiskit
+2. Ville Bergholm et al. PennyLane: Automatic differentiation of hybrid quantum-classical computations. 2018. arXiv:1811.04968
+2. Zhao, H. (2023). Non-IID quantum federated learning with one-shot communication complexity. Quantum Machine Intelligence, 5(1), 3.
+2. https://tensorcircuit.readthedocs.io/en/latest/
+3. https://github.com/PennyLaneAI/qml
