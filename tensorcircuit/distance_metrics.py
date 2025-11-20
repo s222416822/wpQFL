@@ -2,19 +2,7 @@ from scipy.spatial import distance
 
 
 def compute_distances(device_params, avg_params, old_params, metric, cov_matrix=None):
-    """
-    Compute distances between parameter sets.
 
-    Args:
-        device_params: Current device parameters.
-        avg_params: Average (global) parameters.
-        old_params: Previous device parameters.
-        metric: Distance metric to use.
-        cov_matrix: Covariance matrix (optional).
-
-    Returns:
-        Tuple of distances (ews, ewi).
-    """
     print("Metric Used:", metric)
     ews, ewi = 0, 0
     device_params_flat = device_params.ravel()

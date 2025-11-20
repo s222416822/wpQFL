@@ -2,20 +2,7 @@ import numpy as np
 from config import num_devices, n_class, alpha
 
 def create_noniid_data(x_train, y_train, num_devices, n_class, alpha, noniid_type):
-    """
-    Create non-IID data partitions for federated learning.
 
-    Args:
-        x_train: Training data features.
-        y_train: Training data labels.
-        num_devices: Number of devices.
-        n_class: Number of classes per device for partial_class method.
-        alpha: Dirichlet distribution parameter.
-        noniid_type: Type of non-IID partitioning ('iid', 'partial_class', etc.).
-
-    Returns:
-        list: List of (x, y) tuples for each device.
-    """
 
     def dirichlet_partitioning(x_data, y_data, num_devices, alpha=0.5):
         class_data = [x_data[y_data == i] for i in np.unique(y_data)]

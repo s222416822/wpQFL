@@ -8,17 +8,6 @@ K = tc.set_backend('jax')
 
 
 def clf(params, c, k):
-    """
-    Quantum circuit applying a series of gates.
-
-    Args:
-        params: Circuit parameters.
-        c: TensorCircuit circuit object.
-        k: Number of layers.
-
-    Returns:
-        Updated circuit.
-    """
     for j in range(k):
         for i in range(no_of_qubits - 1):
             c.cnot(i, i + 1)
@@ -30,15 +19,6 @@ def clf(params, c, k):
 
 
 def readout(c):
-    """
-    Compute probabilities from circuit output.
-
-    Args:
-        c: TensorCircuit circuit object.
-
-    Returns:
-        Probabilities based on readout mode.
-    """
     if readout_mode == 'softmax':
         logits = []
         for i in range(no_of_qubits):
@@ -52,18 +32,6 @@ def readout(c):
 
 
 def loss(params, x, y, k):
-    """
-    Compute loss for the quantum circuit.
-
-    Args:
-        params: Circuit parameters.
-        x: Input data.
-        y: True labels.
-        k: Number of layers.
-
-    Returns:
-        Loss value.
-    """
     c = tc.Circuit(no_of_qubits, inputs=x)
     c = clf(params, c, k)
     probs = readout(c)
@@ -71,18 +39,6 @@ def loss(params, x, y, k):
 
 
 def accuracy(params, x, y, k):
-    """
-    Compute accuracy for the quantum circuit.
-
-    Args:
-        params: Circuit parameters.
-        x: Input data.
-        y: True labels.
-        k: Number of layers.
-
-    Returns:
-        Boolean array of correct predictions.
-    """
     c = tc.Circuit(no_of_qubits, inputs=x)
     c = clf(params, c, k)
     probs = readout(c)
@@ -90,17 +46,6 @@ def accuracy(params, x, y, k):
 
 
 def pred(params, x, k):
-    """
-    Predict probabilities for input data.
-
-    Args:
-        params: Circuit parameters.
-        x: Input data.
-        k: Number of layers.
-
-    Returns:
-        Predicted probabilities.
-    """
     c = tc.Circuit(no_of_qubits, inputs=x)
     c = clf(params, c, k)
     probs = readout(c)

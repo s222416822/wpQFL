@@ -6,15 +6,6 @@ from config import no_of_qubits, no_of_classes, k
 
 
 class Device:
-    """
-    Represents a device in federated learning.
-
-    Attributes:
-        id: Device identifier.
-        data_train: Training dataset.
-        params: Model parameters.
-        opt_state: Optimizer state.
-    """
 
     def __init__(self, id, data, params, opt_state):
         self.id = id
@@ -33,16 +24,6 @@ class Device:
 
 
 def generate_devices(device_data, batch_size=64):
-    """
-    Generate devices for federated learning.
-
-    Args:
-        device_data: List of (features, labels) for each device.
-        batch_size: Batch size for training data.
-
-    Returns:
-        List of Device instances.
-    """
     key = jax.random.PRNGKey(42)
     devices = []
     opt = optax.sgd(learning_rate=0.1)

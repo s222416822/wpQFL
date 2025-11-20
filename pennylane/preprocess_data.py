@@ -5,16 +5,6 @@ from config import num_devices, num_classes, train_split, feature_size
 
 
 def preprocess_data(noniid_type="iid", alpha=0.1):
-    """
-    Load and preprocess Iris dataset with non-IID partitioning.
-
-    Args:
-        noniid_type (str): 'iid', 'single_class', 'partial_class', 'class_imbalance', 'dirichlet'.
-        alpha (float): Dirichlet distribution parameter.
-
-    Returns:
-        tuple: (device_data, server_train_data, server_test_data)
-    """
     # Load dataset
     try:
         data = np.loadtxt("iris.csv", delimiter=",")

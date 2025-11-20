@@ -8,13 +8,7 @@ from config import num_devices, n_class, alpha, dataset_used
 
 
 def plot_distribution(noniid_data, noniid_type):
-    """
-    Plot label distribution across devices.
 
-    Args:
-        noniid_data: List of (x, y) tuples for each device.
-        noniid_type: Type of non-IID partitioning.
-    """
     plt.figure(figsize=(15, 5))
     for i, (device_x, device_y) in enumerate(noniid_data):
         label_distribution = np.bincount(device_y, minlength=10)
@@ -27,9 +21,7 @@ def plot_distribution(noniid_data, noniid_type):
 
 
 def main():
-    """
-    Main function to run the federated learning experiment.
-    """
+
     noniid_types = ["iid", "partial_class", "class_imbalance", "dirichlet", "enhanced_dirichlet"]
     methods = [
         # "Default",

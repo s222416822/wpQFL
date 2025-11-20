@@ -1,6 +1,6 @@
 # Performance Analysis and Design of a Weighted Personalized Quantum Federated Learning
 IEEE Transactions on Artificial Intelligence
-[URL TAI](https://ieeexplore.ieee.org/document/10902619) [Early Access]
+[URL TAI](https://ieeexplore.ieee.org/document/10902619) 
 
 This repository contains the code used for the paper titled "Performance Analysis and Design of a Weighted Personalized Quantum Federated Learning".
 

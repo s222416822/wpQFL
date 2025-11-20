@@ -14,12 +14,8 @@ def get_angles(x):
     beta2 = 2 * np.arcsin(np.linalg.norm(x[2:]) / np.linalg.norm(x))
 
     return np.array([beta2, -beta1 / 2, beta1 / 2, -beta0 / 2, beta0 / 2])
-      # Same as before
 
 def main():
-    """
-    Main function to run the federated learning experiment.
-    """
     noniid_types = ["iid", "single_class", "partial_class", "class_imbalance", "dirichlet"]
     avg_methods = [
         "Default",
@@ -30,12 +26,6 @@ def main():
         # "Euclidean_bias"
     ]
 
-    # avg_method = "Default"
-    # avg_method = "No AVG"
-    # avg_method = "LocalUpdate"
-    # avg_method = "Euclidean"
-    # avg_method = "Weighted"
-    # avg_method = "Euclidean_bias"
 
     distance_metrics = ["euclidean", "cosine", "cityblock", "minkowski"]
     values = [0, 10, 40, 70, 80]

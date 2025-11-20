@@ -10,9 +10,7 @@ from config import batch_size, num_classes
 
 def main_method(logs, avg_method, device_data, device_list, server_train_data, server_test_data, g=0, l=0,
                 distance_metrics_used=None):
-    """
-    Main training method for federated learning.
-    """
+
     if not os.path.exists(logs):
         os.makedirs(logs)
 

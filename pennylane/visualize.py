@@ -4,9 +4,7 @@ import torch
 
 
 def plot_label_distribution(device_data, noniid_type):
-    """
-    Plot label distribution across devices.
-    """
+
     plt.figure(figsize=(10, 6))
     plt.title(f"{noniid_type.replace('_', ' ').title()} Distribution")
     for i in range(num_devices):

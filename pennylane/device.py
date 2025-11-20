@@ -9,10 +9,6 @@ from pennylane.optimize import NesterovMomentumOptimizer
 
 
 class Device:
-    """
-    Represents a device in federated learning.
-    """
-
     def __init__(self, idx, feats_train, y_train, feats_val, y_val, num_train, features, Y):
         self.idx = idx
         self.dev = qml.device("default.qubit", wires=num_qubits)
@@ -45,12 +41,8 @@ def get_angles(x):
     beta2 = 2 * np.arcsin(np.linalg.norm(x[2:]) / np.linalg.norm(x))
 
     return np.array([beta2, -beta1 / 2, beta1 / 2, -beta0 / 2, beta0 / 2])
-      # Same as before
 
 def initialize_devices(device_data):
-    """
-    Initialize devices with training and validation data.
-    """
     device_list = []
     for i, data in enumerate(device_data):
         opt = NesterovMomentumOptimizer(0.01)
@@ -74,20 +66,5 @@ def initialize_devices(device_data):
         bias_init = np.array(0.0, requires_grad=True)
         device = Device(feats_train, Y_train, feats_val, Y_val, opt, weights_init, bias_init, num_train1, features, Y)
         device_list.append(device)
-        # if len(data) == 0:
-        #     continue
-        # X = data[:, :-1]
-        # Y = data[:, -1].to(torch.int64)
-        #
-        # num_data = len(Y)
-        # num_train = int(0.75 * num_data)
-        # index = np.random.permutation(range(num_data))
-        # feats_train = X[index[:num_train]]
-        # Y_train = Y[index[:num_train]]
-        # feats_val = X[index[num_train:]]
-        # Y_val = Y[index[num_train:]]
-        #
-        # device = Device(i, feats_train, Y_train, feats_val, Y_val, num_train, X, Y)
-        # device_list.append(device)
 
     return device_list

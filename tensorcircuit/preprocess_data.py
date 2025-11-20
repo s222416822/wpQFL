@@ -6,16 +6,7 @@ import jax
 
 
 def preprocess_data(dataset='cifar', encoding_mode='vanilla'):
-    """
-    Preprocess CIFAR-10 or MNIST dataset.
 
-    Args:
-        dataset (str): 'cifar' for CIFAR-10 or 'mnist' for MNIST.
-        encoding_mode (str): Encoding mode for MNIST ('vanilla', 'mean', 'half').
-
-    Returns:
-        tuple: (x_train, y_train, x_test, y_test)
-    """
     if dataset == 'cifar':
         # Load CIFAR-10 dataset
         (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()

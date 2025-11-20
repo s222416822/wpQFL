@@ -10,20 +10,6 @@ from distance_metrics import compute_distances
 
 
 def main_method(method, g, l, noniid_data, noniid_type, devices_list, x_test, y_test, distance_metrics_used=None):
-    """
-    Main training method for federated learning.
-
-    Args:
-        method: Training method ('Default', 'Weighted', 'Euclidean').
-        g: Global model weight.
-        l: Local model weight.
-        noniid_data: Non-IID data partitions.
-        noniid_type: Type of non-IID partitioning.
-        devices_list: List of Device instances.
-        x_test: Test data features.
-        y_test: Test data labels.
-        distance_metrics_used: Distance metric for Euclidean method.
-    """
     overall_start_time = time.time()
     if distance_metrics_used is None:
         distance_metrics_used = "NotRequired"

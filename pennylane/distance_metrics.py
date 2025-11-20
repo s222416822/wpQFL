@@ -3,12 +3,6 @@ import torch
 
 
 def compute_distances(device_params, avg_params, old_params, metric, cov_matrix=None):
-    """
-    Compute distances between parameter sets.
-    """
-    ews, ewi = 0, 0
-    # Convert the list of tensors to a single tensor
-    # Flatten and concatenate all tensors in the lists to create a single 1D tensor
 
     device_params_flat = torch.cat([p.view(-1) for p in device_params[0] + device_params[1]])
     avg_params_flat = torch.cat([p.view(-1) for p in avg_params[0] + avg_params[1]])
