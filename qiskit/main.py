@@ -61,20 +61,11 @@ def main_method(method, g, l, noniid_data, noniid_type, distance_metrics_used=No
 
     # Setup logging
     date_time = datetime.now().strftime("%m%d%Y_%H%M%S")
-    logs = f"logs/{simulator}_{method}_{date_time}_{data_used}_numDevices={num_devices}_g{g}_l{l}_metric={distance_metrics_used}_noniid={noniid_type}"
+    logs = f"logs"
 
     if not os.path.exists(logs):
         os.makedirs(logs)
 
-    with open(f"{logs}/parameters.txt", "a") as file:
-        file.write(f"Method: {method}\n")
-        file.write(f"Date and Time: {date_time}\n")
-        file.write(f"Data Used: {data_used}\n")
-        file.write(f"Number of Devices: {num_devices}\n")
-        file.write(f"g value: {g}\n")
-        file.write(f"l value: {l}\n")
-        file.write(f"Distance Metric: {distance_metrics_used}\n")
-        file.write(f"Non-IID Type: {noniid_type}\n\n")
 
     print(f"Logs written to {logs}/parameters.txt")
 
@@ -102,19 +93,7 @@ def main_method(method, g, l, noniid_data, noniid_type, distance_metrics_used=No
 
             average_weights = np.mean(total_weights, axis=0)
             print("Server Average Weights: ", average_weights)
-            server_device.vqc.initial_point = average_weights
-            with open(f"{logs}/global_params.txt", "a") as file:
-                file.write(f"comm_round: {n} - params:{average_weights}\n")
 
-            server_device.training()
-            with open(f"{logs}/training_time_server.txt", 'a') as file:
-                file.write(
-                    f"Comm_round: {n} - Device: {server_device.idx} - training_time: {server_device.training_time}\n")
-            print(
-                f"Comm_round: {n} - Server Device: {server_device.idx} - train_acc: {server_device.train_score_q4:.2f} - test_acc: {server_device.test_score_q4:.2f}\n")
-            with open(f"{logs}/server.txt", 'a') as file:
-                file.write(
-                    f"Comm_round: {n} - Device: {server_device.idx} - train_acc: {server_device.train_score_q4:.2f} - test_acc: {server_device.test_score_q4:.2f}\n")
 
             server_device.evaluate(average_weights)
             print(
@@ -129,8 +108,6 @@ def main_method(method, g, l, noniid_data, noniid_type, distance_metrics_used=No
             with open(f"{logs}/objective_values_devices.txt", 'a') as file:
                 for device in devices_list:
                     file.write(f"Device {device.idx}: {device.objective_func_vals}\n")
-            with open(f"{logs}/server_objective_values_devices.txt", 'a') as file:
-                file.write(f"Device {server_device.idx}: {server_device.objective_func_vals}\n")
 
             comm_end_time = time.time() - comm_start_time
             print(f"Comm_round: {n} - Comm_time: {comm_end_time}")
@@ -162,23 +139,9 @@ def main_method(method, g, l, noniid_data, noniid_type, distance_metrics_used=No
 
             average_weights = np.mean(total_weights, axis=0)
             print("Average Weights: ", average_weights)
-            server_device.vqc.initial_point = average_weights
-            with open(f"{logs}/global_params.txt", "a") as file:
-                file.write(f"comm_round: {n} - params:{average_weights}\n")
-            server_device.training()
-            with open(f"{logs}/training_time_server.txt", 'a') as file:
-                file.write(
-                    f"Comm_round: {n} - Device: {server_device.idx} - training_time: {server_device.training_time}\n")
-            print(
-                f"Comm_round: {n} - Server Device: {server_device.idx} - train_acc: {server_device.train_score_q4:.2f} - test_acc: {server_device.test_score_q4:.2f}\n")
-            with open(f"{logs}/server.txt", 'a') as file:
-                file.write(
-                    f"Comm_round: {n} - Device: {server_device.idx} - train_acc: {server_device.train_score_q4:.2f} - test_acc: {server_device.test_score_q4:.2f}\n")
+
 
             server_device.evaluate(average_weights)
-            with open(f"{logs}/server_test.txt", 'a') as file:
-                file.write(
-                    f"Comm_round: {n} - Device: {server_device.idx} - test_acc: {server_device.test_score_q4_1}\n")
 
             if method == "weighted":
                 for device in devices_list:
@@ -186,8 +149,6 @@ def main_method(method, g, l, noniid_data, noniid_type, distance_metrics_used=No
 
             if method == "euclidean":
                 for device in devices_list:
-                    ed_avg = 0
-                    ed_l = 0
                     ews, ewi = compute_distances(device.new_params, average_weights, device.old_params,
                                                  distance_metrics_used)
                     device.old_params = device.new_params
@@ -205,8 +166,6 @@ def main_method(method, g, l, noniid_data, noniid_type, distance_metrics_used=No
                 for device in devices_list:
                     file.write(f"Device {device.idx}: {device.objective_func_vals}\n")
 
-            with open(f"{logs}/server_objective_values_devices.txt", 'a') as file:
-                file.write(f"Device {server_device.idx}: {server_device.objective_func_vals}\n")
 
             comm_end_time = time.time() - comm_start_time
             print(f"Comm_round: {n} - Comm_time: {comm_end_time}")
